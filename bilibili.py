@@ -40,4 +40,4 @@ def bilibili_search(keyword: str, session_data: str|None = None) -> dict[Any, An
 
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport='stdio')

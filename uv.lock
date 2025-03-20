@@ -26,7 +26,7 @@ wheels = [
 ]
 
 [[package]]
-name = "bilibili-search"
+name = "bilibili-mcp-server"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
