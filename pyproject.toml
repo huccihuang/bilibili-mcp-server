@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "bilibili-api-python>=17.1.4",
     "mcp[cli]>=1.4.1",
     "requests>=2.32.3",
 ]
