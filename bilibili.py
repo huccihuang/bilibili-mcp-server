@@ -7,7 +7,7 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP("Bilibili mcp server")
 
 @mcp.tool()
-def bilibili_search(keyword: str) -> dict[Any, Any]:
+def general_search(keyword: str) -> dict[Any, Any]:
     """
     Search Bilibili API with the given keyword.
     
