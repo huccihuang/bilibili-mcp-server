@@ -25,10 +25,10 @@ uv sync
       "command": "uv",
       "args": [
         "--directory",
-        "/your-project/path/bilibili-mcp-server",
+        "/your-project-path/bilibili-mcp-server",
         "run",
         "bilibili.py"
-      ],
+      ]
     }
   }
 }
