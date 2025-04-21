@@ -47,8 +47,8 @@ uv sync
    - 视频搜索 (`video`)
    - 直播搜索 (`live`)
    - 专栏搜索 (`article`)
-
 返回结果包含 `exact_match` 字段，标识是否找到精确匹配的结果。
+4. `get_video_danmaku·`: 获取视频弹幕信息。
 
 ## 如何为本项目做贡献
 

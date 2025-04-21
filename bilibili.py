@@ -1,11 +1,12 @@
 import os
 from typing import Any, Optional, Dict, List
 
-from bilibili_api import search, sync
+from bilibili_api import search, sync, ass, video
 from bilibili_api.search import SearchObjectType, OrderUser
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("Bilibili mcp server")
+
 
 @mcp.tool()
 def general_search(keyword: str) -> dict[Any, Any]:
@@ -19,6 +20,7 @@ def general_search(keyword: str) -> dict[Any, Any]:
         Dictionary containing the search results from Bilibili
     """
     return sync(search.search(keyword))
+
 
 @mcp.tool()
 def search_user(keyword: str, page: int = 1) -> dict[Any, Any]:
@@ -38,6 +40,7 @@ def search_user(keyword: str, page: int = 1) -> dict[Any, Any]:
         order_type=OrderUser.FANS,
         page=page
     ))
+
 
 @mcp.tool()
 def get_precise_results(keyword: str, search_type: str = "user") -> Dict[str, Any]:
@@ -100,6 +103,36 @@ def get_precise_results(keyword: str, search_type: str = "user") -> Dict[str, An
         return {"users": filtered_result, "exact_match": False}
     
     return result
+
+
+@mcp.tool()
+def get_video_danmaku(bv_id):
+    """
+    获取视频的弹幕数据。
+    
+    Args:
+        bv_id: 视频的BV号
+        
+    Returns:
+        弹幕数据
+    """
+    # 定义video对象
+    v = video.Video(bv_id)
+    # 生成弹幕文件
+    output_filepath = "protobuf.ass"
+    sync(ass.make_ass_file_danmakus_protobuf(
+        obj=v, # 生成弹幕文件的对象
+        page=0, # 哪一个分 P (从 0 开始)
+        out=output_filepath # 输出文件地址
+    ))
+    # 读取弹幕文件
+    with open(output_filepath, 'r') as f:
+        content = f.read()
+    # 删除弹幕文件
+    os.remove(output_filepath)
+    
+    return content
+
 
 if __name__ == "__main__":
     mcp.run(transport='stdio')
