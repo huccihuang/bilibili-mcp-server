@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/huccihuang-bilibili-mcp-server-badge.png)](https://mseep.ai/app/huccihuang-bilibili-mcp-server)
+
 # Bilibili API MCP Server
 
 用于哔哩哔哩 API 的 MCP（模型上下文协议）服务器，支持多种操作。
